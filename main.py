@@ -15,7 +15,7 @@ def f(y):
     return numerator / denominator
 
 if __name__ == '__main__':
-    print("i\t| f(i)")
+    print("y\t| f(y)")
     print('-' * 30)
-    for i in range(-9, 11):
-        print(f"{i}\t| {f(i)};")
+    for y in range(-9, 11):
+        print(f"{y}\t| {f(y)};")
