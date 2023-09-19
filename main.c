@@ -1,5 +1,6 @@
 #include <stdio.h>
 
+// pow(base, power) = base**power
 long double pow(long double base, int power)
 {
   long double result = 1;
@@ -10,6 +11,7 @@ long double pow(long double base, int power)
   return result;
 }
 
+// double_factorial(initial_value) = initial_value!!
 long double double_factorial(long double initial_value)
 {
   long double result = 1;
@@ -20,22 +22,23 @@ long double double_factorial(long double initial_value)
   return result;
 }
 
+// getT(x) = t(x)
 long double getT(long double x)
 {
-  long double numerator = 0;
+  long double numerator = 0; // Общий числитель
   for (int k = 0; k <= 10; k++)
   {
-    long double sum_numerator = pow(x, 2 * k + 1);
-    long double sum_denominator = double_factorial(2 * k + 1);
+    long double sum_numerator = pow(x, 2 * k + 1);             // Суммируемый числитель
+    long double sum_denominator = double_factorial(2 * k + 1); // Суммируемый знаменатель
 
     numerator += sum_numerator / sum_denominator;
   }
 
-  long double denominator = 0;
+  long double denominator = 0; // Общий знаменатель
   for (int k = 0; k <= 10; k++)
   {
-    long double sum_numerator = pow(x, 2 * k);
-    long double sum_denominator = double_factorial(2 * k);
+    long double sum_numerator = pow(x, 2 * k);             // Суммируемый числитель
+    long double sum_denominator = double_factorial(2 * k); // Суммируемый знаменатель
 
     denominator += sum_numerator / sum_denominator;
   }
@@ -43,10 +46,11 @@ long double getT(long double x)
   return numerator / denominator;
 }
 
+// Требуемая функция
 long double getResult(long double y)
 {
-  long double numerator = 7 * getT(0.25) + 2 * getT(1 + y);
-  long double denominator = 6 - getT(y * y - 1);
+  long double numerator = 7 * getT(0.25) + 2 * getT(1 + y); // Числитель
+  long double denominator = 6 - getT(y * y - 1);            // Знаменатель
 
   return numerator / denominator;
 }
